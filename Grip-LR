@@ -1,0 +1,50 @@
+import pandas as pd
+import sklearn
+from sklearn.model_selection 
+import train_test_split
+from sklearn import preprocessing
+from sklearn.preprocessing import OneHotEncoder
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeRegressor
+from sklearn.ensemble import RandomForestRegressor
+import matplotlib.pyplot as plt
+
+from sklearn.metrics import r2_score,mean_squared_error
+
+data=pd.read_csv('DATA.csv')
+data
+
+
+
+X = data.iloc[:, :-1].values  
+y = data.iloc[:, 1].values  
+
+
+plt.scatter(X, y)
+
+
+X_train,X_test,y_train,y_test=train_test_split(X,y,test_size=0.3,random_state=100)
+
+print(X_train,y_train)
+
+
+print(X_test,y_test)
+
+
+lin=LinearRegression()
+
+lin.fit(X_train,y_train)
+
+prediction=lin.predict(X_test)
+print(X_test)
+
+
+score=r2_score(prediction,y_test)
+
+print(score*100)
+
+hours = [[9.25]]
+
+
+pred = lin.predict(hours)
+pred
